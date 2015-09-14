@@ -317,9 +317,9 @@
               }
             }
             //FIXME: currently hardcode app launch here, might need to figure out a good way to launch app from URL.
-            if (beacon.url === 'http://mzl.radar') {
+            if (beacon.url === 'http://mzl.tpe') {
               new MozActivity({
-                name: "nav",
+                name: "tour",
                 data: {
                   location: "moz-tpe-4f"
                 }
