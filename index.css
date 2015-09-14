@@ -1,0 +1,213 @@
+#beacon-scanner-mask {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    z-index: 65533 !important;
+}
+
+#beacons {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#elec-wave {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 7px;
+    bottom: 7px;
+    border-radius: 21px;
+    border: 1px solid white;
+    transform-origin: center;
+    pointer-events: none;
+}
+
+#elec-wave.scanning {
+    animation: reach-out 3s ease-out infinite;
+}
+
+#beacon-scanner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #FFF;
+    border-radius: 22px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), inset 1px 1px 3px rgba(0, 0, 0, 0.8);
+    z-index: 65535 !important;
+}
+
+#beacon-scanner:before {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border: 2px solid #FFF;
+    border-radius: 16px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), inset 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+#beacon-scanner:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.beacon-alias {
+    display: block;
+    text-align: center;
+    font-size: 9px;
+    color: #FFF;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+    transition: all .2s ease-in;
+    pointer-events: none;
+}
+
+.beacon {
+    position: absolute;
+    display: block;
+    width: 100px;
+    transition: all .2s ease-in;
+    pointer-events: all;
+}
+
+.beacon-icon {
+    position: relative;
+    float: none;
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: auto auto 6px !important;
+    border-radius: 5px;
+    background-color: #FFF;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5), inset -1px -1px 3px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    font-size: 32px;
+    color: #CCC;
+    transition: all .2s ease-in;
+    pointer-events: none;
+}
+
+.beacon-icon > span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    font-size: 9px;
+    color: #000 !important;
+    transition: all .2s ease-in;
+}
+
+.connected .beacon-details {
+    opacity: 1;
+    height: 200px;
+}
+
+.beacon-details {
+    display: block;
+    color: #FFF;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    transition: all .2s ease-in;
+    opacity: 0;
+    height: 0px;
+}
+
+.beacon div {
+    margin-bottom: 6px;
+}
+
+.connected.beacon div {
+    margin-bottom: 12px;
+}
+
+.connected .beacon {
+    width: 200px;
+}
+
+.connected .beacon-alias {
+    font-size: 16px;
+    text-align: left;
+}
+
+.connected .beacon-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 12px !important;
+    border-radius: 10px;
+    font-size: 36px;
+    line-height: 60px;
+}
+.connected .beacon-icon > span {
+    font-size: 14px;
+}
+.beacon-deviation:before {
+    content: "Deviation: ";
+}
+
+.beacon-rssi:before {
+    content: "RSSI: ";
+}
+
+.beacon-name:before {
+    content: "Name: ";
+}
+
+.beacon-address:before {
+    content: "Address: ";
+}
+
+.beacon-uuid:before {
+    content: "UUID: ";
+}
+
+.beacon-major:before {
+    content: "Major: ";
+}
+
+.beacon-minor:before {
+    content: "Minor: ";
+}
+
+.beacon-tx:before {
+    content: "TxPower: ";
+}
+
+.beacon-url:before {
+    content: "URL: ";
+}
+
+.transit-out {
+    transition: all .2s ease-in;
+}
+
+@keyframes reach-out {
+    from {
+        opacity: 1.0;
+        transform: scale(1.0);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(20.0);
+    }
+}

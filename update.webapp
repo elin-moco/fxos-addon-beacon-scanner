@@ -1,0 +1,8 @@
+{
+  "name": "System - Beacon Scanner",
+  "description": "Adds a beacon scanner tray to screen corner",
+  "developer": {
+    "name": "Eddie Lin"
+  },
+  "package_path": "extension.zip"
+}

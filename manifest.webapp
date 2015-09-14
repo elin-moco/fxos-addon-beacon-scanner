@@ -1,0 +1,19 @@
+{
+  "name": "System - Beacon Scanner",
+  "description": "Adds a beacon scanner button to screen corner",
+  "developer": {
+    "name": "Eddie Lin",
+    "url": "http://yshl.in"
+  },
+  "package_path": "package.zip",
+  "role": "addon",
+  "type": "certified",
+  "customizations": [{
+    "filter": "system.gaiamobile.org",
+    "css": [],
+    "scripts": ["index.js", "beacon.js"]
+  }],
+  "icons": {
+    "128": "icons/beacon.png"
+  }
+}
