@@ -11,7 +11,7 @@
   "customizations": [{
     "filter": "system.gaiamobile.org",
     "css": [],
-    "scripts": ["index.js", "beacon.js"]
+    "scripts": ["index.js"]
   }],
   "icons": {
     "128": "icons/beacon.png"
