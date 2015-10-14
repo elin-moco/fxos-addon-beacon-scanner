@@ -4,12 +4,15 @@
   "description": "Adds a beacon scanner tray to screen corner",
   "version": "1.0",
   "author": "Eddie Lin",
+  "icons": {
+    "128": "icons/beacon.png"
+  },
   "content_scripts": [{
     "matches": "app://system.gaiamobile.org/index.html",
     "css": ["index.css"],
-    "js": ["index.js"]
+    "js": ["content-script.js"]
   }],
-  "icons": {
-    "128": "icons/beacon.png"
-  }
+  "web_accessible_resources": [
+    "beacon-scanner.js"
+  ]
 }
