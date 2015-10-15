@@ -503,8 +503,25 @@
         if (view[11] === 0x10) {
           //eddystone-URL beacon
           var scheme = EDDYSTONE_SCHEMES[view[13]];
-          var url = Array.prototype.map.call(view.slice(14, view.indexOf(0x00, 14)), function(b) {
-            return EDDYSTONE_ENCODING[b] ? EDDYSTONE_ENCODING[b] : String.fromCharCode(b);
+          var urlEnd = false;
+          var encode = true;
+          var url = Array.prototype.map.call(view.slice(14, 32), function(b) {
+            if (urlEnd) {
+              return '';
+            }
+            if(b < 14 && encode) {
+              encode = false;
+              return EDDYSTONE_ENCODING[b];
+            } else if (b < 32 || b >= 127) {
+              encode = false;
+              urlEnd = true;
+              return '';
+            } else {
+              if ([35,47,63].indexOf(b) >= 0) {
+                encode = false;
+              }
+              return String.fromCharCode(b);
+            }
           }).join('');
           if (scheme && url) {
             return {
