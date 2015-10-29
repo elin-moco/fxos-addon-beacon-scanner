@@ -192,7 +192,6 @@
   }
   function onScannerDisabled() {
     document.removeEventListener('scanner-disabled', onScannerDisabled);
-    console.log('scanner-disabled');
     var existingContainerEl = $$(MASK_ID);
     if (existingContainerEl) {
       existingContainerEl.parentNode.removeChild(existingContainerEl);
@@ -207,7 +206,7 @@
       return;
     }
     if (positioning) {
-      console.log(beacon);
+//       console.log(beacon);
       var slot = beaconSlots.shift();
       var beaconEl = document.querySelector('div[data-address="' + beacon.address + '"]');
       var beaconAliasEl = document.createElement('div');
@@ -369,7 +368,7 @@
   }
 
   window.startPositioning = function() {
-    console.log('startPositioning');
+//     console.log('startPositioning');
     positioning = true;
     beaconSlots = randomBeaconSlots();
     beaconElems = [];
@@ -378,7 +377,7 @@
   };
 
   window.stopPositioning = function() {
-    console.log('stopPositioning');
+//     console.log('stopPositioning');
     positioning = false;
     navigator.mozBluetooth.defaultAdapter.stopLeScan(connection);
     scanning = false;
@@ -387,17 +386,17 @@
 
   function scanBeacons() {
     try {
-      console.log('scanBeacons');
+//       console.log('scanBeacons');
       if (scanning && !positioning) {
         console.error('skip scan');
         return;
       }
       scanning = true;
       navigator.mozBluetooth.defaultAdapter.startLeScan([]).then(handle => {
-        console.log('Start LE scan', handle);
+//         console.log('Start LE scan', handle);
         connection = handle;
         handle.ondevicefound = e => {
-          console.log('device found!', e.device);
+//           console.log('device found!', e.device);
           try {
             var record = parseScanRecord(e.device, e.scanRecord);
             if (record) {
