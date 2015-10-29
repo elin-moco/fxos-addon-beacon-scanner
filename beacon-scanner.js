@@ -1,8 +1,6 @@
 /* global ScreenLayout, Event */
 
 (function($$) {
-  var MANIFEST_URL = 'app://36af226b-b311-f848-8c46-224e336f2db7/manifest.webapp';
-  //var MANIFEST_URL = 'https://elin-moco.github.io/fxos-addon-draggable-home-btn/manifest.webapp';
   var MASK_ID = 'beacon-scanner-mask';
   var BEACONS_ID = 'beacons';
   var WAVE_ID = 'elec-wave';
@@ -50,22 +48,14 @@
   else {
     window.addEventListener('DOMContentLoaded', initialize);
   }
-
-  navigator.mozApps.mgmt.onenabledstatechange = function(event) {
-    //console.log(event);
-    var app = event.application;
-    //console.log(app.manifestURL);
-    if (app.manifestURL === MANIFEST_URL && !app.enabled) {
-      uninitialize();
-    }
-  };
-
-  window.addEventListener('lockscreen-appclosed', function() {
+  function onScreenUnlocked() {
     screenLocked = false;
-  });
-  window.addEventListener('lockscreen-appopened', function() {
+  }
+  function onScreenLocked() {
     screenLocked = true;
-  });
+  }
+  window.addEventListener('lockscreen-appclosed', onScreenUnlocked);
+  window.addEventListener('lockscreen-appopened', onScreenLocked);
 
   function initialize() {
     try {
@@ -200,13 +190,17 @@
       console.error(err);
     }
   }
-
-  function uninitialize() {
+  function onScannerDisabled() {
+    document.removeEventListener('scanner-disabled', onScannerDisabled);
+    console.log('scanner-disabled');
     var existingContainerEl = $$(MASK_ID);
-    existingContainerEl.parentNode.removeChild(existingContainerEl);
+    if (existingContainerEl) {
+      existingContainerEl.parentNode.removeChild(existingContainerEl);
+    }
     window.removeEventListener('lockscreen-appclosed', onScreenUnlocked);
     window.removeEventListener('lockscreen-appopened', onScreenLocked);
   }
+  document.addEventListener('scanner-disabled', onScannerDisabled);
 
   window.addBeacon = function(beacon) {
     if (!beaconSlots || 0 == beaconSlots.length) {

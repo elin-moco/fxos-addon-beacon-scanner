@@ -6,7 +6,7 @@
     left: 0;
     top: 0;
     overflow: hidden;
-    z-index: 65533 !important;
+    z-index: 65537 !important;
 }
 
 #beacons {
@@ -38,7 +38,7 @@
     border: 2px solid #FFF;
     border-radius: 22px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), inset 1px 1px 3px rgba(0, 0, 0, 0.8);
-    z-index: 65535 !important;
+    z-index: 65537 !important;
 }
 
 #beacon-scanner:before {
